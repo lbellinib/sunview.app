@@ -1,4 +1,4 @@
-name = "sunview-valet"
+name = "valetparking"
 main = "worker/index.js"
 compatibility_date = "2024-10-02"
 assets = { directory = "public", binding = "ASSETS" }
