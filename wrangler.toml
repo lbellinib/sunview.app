@@ -1,0 +1,7 @@
+name = "valetparking"
+main = "worker/index.js"
+compatibility_date = "2024-10-02"
+assets = { directory = "public", binding = "ASSETS" }
+
+[vars]
+API_BACKEND_HINT = "This deployment serves static assets only. Run the Express server for API support."
