@@ -1,0 +1,18 @@
+name = 'valetparking'
+main = "worker/index.js"
+compatibility_date = "2024-10-02"
+assets = { directory = "public", binding = "ASSETS" }
+
+[vars]
+API_ORIGIN = "https://api.sunview.app"
+CRON_SECRET = "set-in-cloudflare-dashboard"
+HOTEL_TZ = "America/New_York"
+
+[triggers]
+crons = ["59 23 * * *"]
+
+# Uncomment and configure once the D1 database is provisioned.
+# [[d1_databases]]
+# binding = "VALET_D1"
+# database_name = "sunview-valet"
+# database_id = "00000000-0000-0000-0000-000000000000"

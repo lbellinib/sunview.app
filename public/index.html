@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sunview Valet Portal</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main id="app" class="app">
+      <section id="login-view" class="card">
+        <h1>Hotel Valet Access</h1>
+        <p class="muted">Enter your access PIN to continue.</p>
+        <form id="login-form" autocomplete="off">
+          <label for="pin-input">Access PIN</label>
+          <input
+            id="pin-input"
+            name="pin"
+            type="password"
+            inputmode="numeric"
+            minlength="4"
+            maxlength="8"
+            required
+          />
+          <button type="submit" class="primary">Sign In</button>
+        </form>
+      </section>
+
+      <section id="main-view" class="hidden">
+        <header class="top-bar">
+          <div>
+            <h1>Sunview Valet</h1>
+            <p id="agent-info" class="muted"></p>
+          </div>
+          <button id="logout-btn" class="secondary">Sign out</button>
+        </header>
+        <nav class="mode-toggle" role="tablist">
+          <button id="arrival-tab" class="primary" role="tab" aria-selected="true">Arrival</button>
+          <button id="departure-tab" class="secondary" role="tab" aria-selected="false">
+            Departure
+          </button>
+          <button id="admin-tab" class="secondary hidden" role="tab" aria-selected="false">
+            Admin
+          </button>
+        </nav>
+
+        <section id="arrival-view" role="tabpanel">
+          <form id="arrival-form" class="card" autocomplete="off">
+            <h2>Vehicle Arrival</h2>
+            <div class="field">
+              <label for="arrival-photo">Vehicle photo<span class="required">*</span></label>
+              <div class="photo-input">
+                <input
+                  id="arrival-photo"
+                  name="image"
+                  type="file"
+                  accept="image/*"
+                  capture="environment"
+                  required
+                  aria-describedby="arrival-photo-hint"
+                />
+                <p id="arrival-photo-hint" class="hint muted small">
+                  Allow camera access when prompted so the license plate is visible in the photo.
+                </p>
+                <div id="photo-preview" class="photo-preview hidden">
+                  <img alt="Vehicle preview" id="photo-preview-img" />
+                  <button type="button" id="retake-btn" class="secondary small">Retake</button>
+                </div>
+              </div>
+            </div>
+            <div class="grid single-row">
+              <div class="field">
+                <label for="arrival-ticket">Ticket UID<span class="required">*</span></label>
+                <input
+                  id="arrival-ticket"
+                  name="ticketUid"
+                  type="text"
+                  autocomplete="off"
+                  inputmode="text"
+                  required
+                  minlength="2"
+                  maxlength="12"
+                />
+              </div>
+              <div class="field">
+                <label for="arrival-plate">License plate<span class="required">*</span></label>
+                <input
+                  id="arrival-plate"
+                  name="plateNumber"
+                  type="text"
+                  autocomplete="off"
+                  inputmode="text"
+                  required
+                  maxlength="10"
+                />
+              </div>
+            </div>
+            <button type="submit" class="primary block" id="arrival-submit">Submit Arrival</button>
+            <p id="arrival-status" class="status" role="alert"></p>
+            <div id="offline-queue" class="muted small hidden"></div>
+          </form>
+        </section>
+
+        <section id="departure-view" class="hidden" role="tabpanel">
+          <form id="departure-form" class="card" autocomplete="off">
+            <h2>Vehicle Departure</h2>
+            <label for="departure-query">Ticket UID or Plate</label>
+            <input id="departure-query" name="query" type="text" required />
+            <button type="submit" class="primary block">Search</button>
+            <p id="departure-status" class="status" role="alert"></p>
+          </form>
+          <section id="departure-results" class="results"></section>
+        </section>
+
+        <section id="admin-view" class="hidden" role="tabpanel">
+          <div class="card">
+            <h2>Admin Dashboard</h2>
+            <form id="admin-filter-form" class="grid">
+              <div class="field">
+                <label for="admin-date">Filter by date</label>
+                <input id="admin-date" type="date" />
+              </div>
+              <div class="field">
+                <label for="admin-status">Status</label>
+                <select id="admin-status">
+                  <option value="">All</option>
+                  <option value="parked">Parked</option>
+                  <option value="closed">Closed</option>
+                </select>
+              </div>
+              <div class="field align-end">
+                <button type="submit" class="secondary">Refresh</button>
+              </div>
+            </form>
+            <div class="admin-actions">
+              <button id="admin-export-csv" class="primary">Download CSV</button>
+              <button id="admin-view-html" class="secondary">View HTML Summary</button>
+            </div>
+            <div id="admin-summary" class="muted small"></div>
+            <table id="admin-table">
+              <thead>
+                <tr>
+                  <th>Ticket</th>
+                  <th>Plate</th>
+                  <th>Status</th>
+                  <th>Arrival</th>
+                  <th>Departure</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
