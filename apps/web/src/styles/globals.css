@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Work Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+}
+
+* {
+  scroll-margin-top: 6rem;
+}
+
+.reduced-motion * {
+  animation: none !important;
+  transition: none !important;
+}
