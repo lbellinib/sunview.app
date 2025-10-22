@@ -1,0 +1,12 @@
+{
+  "name": "@life-clock/design-tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    "./tokens": "./dist/tokens.js",
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "scripts": {
+    "build": "node ./scripts/build.mjs"
+  }
+}
