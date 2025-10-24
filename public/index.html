@@ -2,150 +2,200 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sunview Valet Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Life Clock — A Mirror That Tells Time by Reflecting the Life That Remains</title>
+    <meta
+      name="description"
+      content="Life Clock is a contemplative instrument that turns the flow of time into a living canvas, inviting you to feel the texture of the life that remains."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <main id="app" class="app">
-      <section id="login-view" class="card">
-        <h1>Hotel Valet Access</h1>
-        <p class="muted">Enter your access PIN to continue.</p>
-        <form id="login-form" autocomplete="off">
-          <label for="pin-input">Access PIN</label>
-          <input id="pin-input" name="pin" type="password" inputmode="numeric" minlength="4" maxlength="8" required />
-          <button type="submit" class="primary">Sign In</button>
-        </form>
-        <p class="muted small">Test agent PIN: <strong>1234</strong></p>
-      </section>
-
-      <section id="main-view" class="hidden">
-        <header class="top-bar">
-          <div>
-            <h1>Sunview Valet</h1>
-            <p id="agent-info" class="muted"></p>
-          </div>
-          <button id="logout-btn" class="secondary">Sign out</button>
-        </header>
-        <nav class="mode-toggle" role="tablist">
-          <button id="arrival-tab" class="primary" role="tab" aria-selected="true">Arrival</button>
-          <button id="departure-tab" class="secondary" role="tab" aria-selected="false">Departure</button>
-          <button id="admin-tab" class="secondary hidden" role="tab" aria-selected="false">Admin</button>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <span class="brand-icon" aria-hidden="true">◴</span>
+          <span class="brand-name">Life Clock</span>
+        </div>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#essence">Essence</a>
+          <a href="#experience">Experience</a>
+          <a href="#clock">Life Arc</a>
+          <a href="#principles">Principles</a>
         </nav>
+      </header>
 
-        <section id="arrival-view" role="tabpanel">
-          <form id="arrival-form" class="card" autocomplete="off">
-            <h2>Vehicle Arrival</h2>
-            <div class="field">
-              <label for="arrival-photo">Vehicle photo<span class="required">*</span></label>
-              <div class="photo-input">
-                <input id="arrival-photo" name="image" type="file" accept="image/*" capture="environment" required />
-                <div id="photo-preview" class="photo-preview hidden">
-                  <img alt="Vehicle preview" id="photo-preview-img" />
-                  <button type="button" id="retake-btn" class="secondary small">Retake</button>
-                </div>
-              </div>
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-content">
+            <p class="hero-kicker">A contemplative instrument for the irreversible now</p>
+            <h1 id="hero-title">A mirror that tells time by reflecting the life that remains.</h1>
+            <p class="hero-lede">
+              Life Clock turns the abstract flow of time into a living, personal canvas. It measures being—not productivity—inviting you to feel the
+              weight and tenderness of the days ahead and behind.
+            </p>
+            <div class="cta-group">
+              <a class="cta primary" href="#clock">Experience the Life Arc</a>
+              <a class="cta ghost" href="#essence">Learn more</a>
             </div>
-            <div class="grid">
-              <div class="field">
-                <label for="arrival-ticket">Ticket UID<span class="required">*</span></label>
-                <input id="arrival-ticket" name="ticketUid" type="text" required minlength="2" maxlength="12" />
-              </div>
-              <div class="field">
-                <label for="arrival-plate">License plate<span class="required">*</span></label>
-                <input id="arrival-plate" name="plateNumber" type="text" required maxlength="10" />
-              </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="orbital">
+              <div class="orbit orbit--inner"></div>
+              <div class="orbit orbit--middle"></div>
+              <div class="orbit orbit--outer"></div>
+              <div class="marker marker--present">now</div>
+              <div class="marker marker--future">becoming</div>
             </div>
-            <div class="grid">
-              <div class="field">
-                <label for="arrival-state">State</label>
-                <input id="arrival-state" name="plateState" type="text" maxlength="10" />
-              </div>
-              <div class="field">
-                <label for="arrival-country">Country</label>
-                <input id="arrival-country" name="plateCountry" type="text" value="USA" />
-              </div>
-            </div>
-            <details class="accordion">
-              <summary>Vehicle details (optional)</summary>
-              <div class="grid">
-                <div class="field">
-                  <label for="vehicle-make">Make</label>
-                  <input id="vehicle-make" name="vehicleMake" type="text" />
-                </div>
-                <div class="field">
-                  <label for="vehicle-model">Model</label>
-                  <input id="vehicle-model" name="vehicleModel" type="text" />
-                </div>
-                <div class="field">
-                  <label for="vehicle-color">Color</label>
-                  <input id="vehicle-color" name="vehicleColor" type="text" />
-                </div>
-              </div>
-            </details>
-            <div class="field">
-              <label for="arrival-notes">Notes</label>
-              <textarea id="arrival-notes" name="notes" rows="2" placeholder="Room number, VIP, etc."></textarea>
-            </div>
-            <button type="submit" class="primary block" id="arrival-submit">Submit Arrival</button>
-            <p id="arrival-status" class="status" role="alert"></p>
-            <div id="offline-queue" class="muted small hidden"></div>
-          </form>
+          </div>
         </section>
 
-        <section id="departure-view" class="hidden" role="tabpanel">
-          <form id="departure-form" class="card" autocomplete="off">
-            <h2>Vehicle Departure</h2>
-            <label for="departure-query">Ticket UID or Plate</label>
-            <input id="departure-query" name="query" type="text" required />
-            <button type="submit" class="primary block">Search</button>
-            <p id="departure-status" class="status" role="alert"></p>
-          </form>
-          <section id="departure-results" class="results"></section>
+        <section id="essence" class="section section--split">
+          <div class="section-copy">
+            <h2>The essence</h2>
+            <p>
+              Where traditional clocks tally hours and minutes, Life Clock measures being. It situates you within the finite arc of existence, revealing how
+              each breath and sunrise contributes to the whole shape of your life.
+            </p>
+            <p>
+              Mortality is not a threat in this frame—it is a design constraint that gives form, texture, and meaning to the days entrusted to you.
+              Life Clock is a gentle rebellion against distraction, calling you back to presence.
+            </p>
+          </div>
+          <div class="section-card">
+            <h3>In one sentence</h3>
+            <p class="quote">Life Clock is a mirror that tells time by reflecting the life that remains, reminding you to live deliberately within it.</p>
+            <ul class="details">
+              <li><span class="label">Form</span><span>Philosophy &times; art &times; personal technology</span></li>
+              <li><span class="label">Focus</span><span>Perception over productivity</span></li>
+              <li><span class="label">Gesture</span><span>Feel time, don’t race it</span></li>
+            </ul>
+          </div>
         </section>
 
-        <section id="admin-view" class="hidden" role="tabpanel">
-          <div class="card">
-            <h2>Admin Dashboard</h2>
-            <form id="admin-filter-form" class="grid">
-              <div class="field">
-                <label for="admin-date">Filter by date</label>
-                <input id="admin-date" type="date" />
-              </div>
-              <div class="field">
-                <label for="admin-status">Status</label>
-                <select id="admin-status">
-                  <option value="">All</option>
-                  <option value="parked">Parked</option>
-                  <option value="closed">Closed</option>
-                </select>
-              </div>
-              <div class="field align-end">
-                <button type="submit" class="secondary">Refresh</button>
+        <section id="experience" class="section section--highlight">
+          <div class="section-copy narrow">
+            <h2>How the experience unfolds</h2>
+            <div class="experience-grid">
+              <article>
+                <h3>Temporal precision</h3>
+                <p>
+                  Live data from your calendar, circadian rhythm, and chosen milestones anchors Life Clock in the real. It renders the passing moment as a
+                  luminous segment of an unfolding whole.
+                </p>
+              </article>
+              <article>
+                <h3>Existential reflection</h3>
+                <p>
+                  Visual metaphors—light, color, density—change as you approach chapters of your life. The interface asks not “What’s next?” but “How does this
+                  moment feel?”
+                </p>
+              </article>
+              <article>
+                <h3>A living canvas</h3>
+                <p>
+                  Every interaction leaves a trace. A journal entry, a heartbeat, a sunrise. The canvas slowly blooms, a portrait of attention paid to what
+                  matters.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="clock" class="section section--clock">
+          <div class="section-copy">
+            <h2>Feel your finite arc</h2>
+            <p>
+              Enter your birth date and the span of life you hope to inhabit. Life Clock will situate the present moment along that arc, inviting you to sit
+              with the proportion lived and the horizon still unfolding.
+            </p>
+          </div>
+          <div class="clock-card" aria-live="polite">
+            <form class="clock-form" id="life-form">
+              <label for="birth-date">Birth date</label>
+              <input type="date" id="birth-date" required />
+
+              <label for="life-span">Desired lifespan (years)</label>
+              <div class="range-field">
+                <input type="range" id="life-span" min="40" max="120" step="1" value="85" />
+                <output id="life-span-output" for="life-span">85 years</output>
               </div>
             </form>
-            <div class="admin-actions">
-              <button id="admin-export-csv" class="primary">Download CSV</button>
-              <button id="admin-view-html" class="secondary">View HTML Summary</button>
+
+            <div class="clock-visual">
+              <div class="clock-ring">
+                <svg viewBox="0 0 200 200" role="img" aria-label="Circular representation of life lived">
+                  <circle class="ring" cx="100" cy="100" r="90"></circle>
+                  <circle class="ring ring--progress" cx="100" cy="100" r="90"></circle>
+                </svg>
+                <div class="clock-center">
+                  <p class="clock-percent" id="life-percent">0%</p>
+                  <p class="clock-caption">lived</p>
+                </div>
+              </div>
+              <dl class="clock-stats">
+                <div>
+                  <dt>Days lived</dt>
+                  <dd id="days-lived">—</dd>
+                </div>
+                <div>
+                  <dt>Days remaining</dt>
+                  <dd id="days-remaining">—</dd>
+                </div>
+                <div>
+                  <dt>Projected horizon</dt>
+                  <dd id="projected-horizon">—</dd>
+                </div>
+              </dl>
             </div>
-            <div id="admin-summary" class="muted small"></div>
-            <table id="admin-table">
-              <thead>
-                <tr>
-                  <th>Ticket</th>
-                  <th>Plate</th>
-                  <th>Status</th>
-                  <th>Arrival</th>
-                  <th>Departure</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+            <p class="clock-note" id="clock-note">Set your details to begin the reflection.</p>
           </div>
         </section>
-      </section>
-    </main>
-    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+        <section id="principles" class="section section--columns">
+          <div>
+            <h2>Principles of Life Clock</h2>
+            <ul class="principles">
+              <li>
+                <h3>Presence over performance</h3>
+                <p>The interface quiets urgency and surfaces sensation—color, rhythm, language—so you can inhabit the moment you are in.</p>
+              </li>
+              <li>
+                <h3>Data with dignity</h3>
+                <p>Your life signals are yours. Life Clock works locally first, encrypts what it must send, and lets you decide what becomes memory.</p>
+              </li>
+              <li>
+                <h3>Growing with you</h3>
+                <p>Seasonal themes and rituals keep the experience alive. From solstice reflections to annual harvests of insight, the clock evolves as you do.</p>
+              </li>
+            </ul>
+          </div>
+          <aside class="aside">
+            <h3>Beyond the app</h3>
+            <p>
+              Imagine Life Clock as an ambient sculpture in your home, a wearable pulse on your wrist, or a projection at a gathering that invites shared
+              contemplation of time.
+            </p>
+            <p>
+              Each expression echoes the same invitation: notice the life that is happening, choose how to meet it, and honor the impermanence that makes it
+              meaningful.
+            </p>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>&copy; <span id="copyright-year"></span> Life Clock. Crafted for sunview.app.</p>
+        <a href="mailto:hello@sunview.app" class="footer-link">hello@sunview.app</a>
+      </footer>
+    </div>
+
     <script type="module" src="/app.js"></script>
   </body>
 </html>
